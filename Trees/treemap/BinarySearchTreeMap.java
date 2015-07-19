@@ -130,7 +130,8 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 		System.out.println("");
 	}
 	
-	public void printTreePostOrder(final Node<K, V> r) {
+	/* Iterative PostOrder */
+	/*public void printTreePostOrder(final Node<K, V> r) {
 		Deque<Node<K, V>> stack = new ArrayDeque<Node<K, V>>();
 		Node<K, V> x = r;
 		Node<K, V> lastVisited = x;
@@ -155,15 +156,65 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 				x = x.right;
 			}
 		}
-	}
+	}*/
+	
+	/* Iterative PostOrder - single while loop, if-else constructs*/
+	public void printTreePostOrder(final Node<K, V> r) {
+		Deque<Node<K, V>> stack = new ArrayDeque<Node<K, V>>();
+		Node<K, V> x = r;
+		Node<K, V> lastVisited = x;
+
+		while (x != null || !stack.isEmpty()) {
+			if (x != null) {
+				stack.push(x);
+				x = x.left;
+			}
+			//after traversing left
+			//traverse right
+			//if no right, then print
+			//update lastPrinted node
+			else{
+				x = stack.peek();
+				if (x.right == null || x.right == lastVisited) {
+					System.out.println(x);
+					lastVisited = x;
+					x = null; //important step
+					stack.pop(); //remove visited node from stack
+				} 
+				else {
+					x = x.right;
+				}//end of inner else
+			}//end of outer else
+		}//end of while loop
+	}//end of method
 
 	public void printTreePreOrder() {
 		System.out.print(" \nPreOrder Traversal\n");
 		printTreePreOrder(this.root);
 		System.out.println("");
 	}
-	
+
+	/* Iterative PreOrder - cleaner code */
 	public void printTreePreOrder(final Node<K,V> r){
+		Deque<Node<K,V>> stack = new ArrayDeque<Node<K,V>>();
+		Node<K,V> x = r;
+		
+		while(x != null || !stack.isEmpty()){
+			if(x != null){ // x can be null
+				System.out.println(x);
+				if(x.right != null){  stack.push(x.right); }
+				x = x.left;
+			}else{ //x is null, pop the top node
+				if(!stack.isEmpty()){ //if stack empty, do nothing
+					x = stack.pop();	
+				}
+			}
+		}
+	}
+	
+	
+	/* Iterative PreOrder */
+	/*public void printTreePreOrder(final Node<K,V> r){
 		Deque<Node<K,V>> stack = new ArrayDeque<Node<K,V>>();
 		Node<K,V> x = r;
 		while(x != null || !stack.isEmpty()){
@@ -181,7 +232,7 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 			else break;
 				
 		}
-	}
+	}*/
 	
 	
 	
