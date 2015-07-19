@@ -120,7 +120,6 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 			}
 		}
 	}
-
 	
 	public void printTreePostOrder() {
 		System.out.print(" \nPostOrder Traversal\n");
@@ -232,9 +231,24 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 		}
 	}*/
 	
+	public void printLevelOrder() {
+		System.out.print(" \nLevelOrder Traversal\n");
+		printLevelOrder(this.root);
+		System.out.println("");
+	}
 	
-	
-	
+	public void printLevelOrder(final Node<K,V> x){
+		Node<K,V> curr = x;
+		Deque<Node<K,V>> queue = new ArrayDeque<Node<K,V>>();
+		queue.add(curr);
+		
+		while(!queue.isEmpty()){
+			curr = queue.poll();
+			System.out.println(curr);
+			if(curr.left != null)	queue.offer(curr.left);
+			if(curr.right != null)	queue.offer(curr.right);
+		}
+	}
 	
 	
 }
