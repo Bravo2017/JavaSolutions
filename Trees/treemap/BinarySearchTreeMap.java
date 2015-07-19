@@ -1,21 +1,23 @@
 package treemap;
 
-public class BinarySearchTreeMap<K extends Comparable<K>,V> {
-	String x;
-	private Node<K,V> root;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-	private class Node<K,V> {
+public class BinarySearchTreeMap<K extends Comparable<K>, V> {
+	private Node<K, V> root;
+
+	private class Node<K, V> {
 		K key;
 		V value;
-		Node<K,V> left;
-		Node<K,V> right;
+		Node<K, V> left;
+		Node<K, V> right;
 
 		/* constructor */
-		public Node(K key, V value, Node<K,V> left, Node<K,V> right) {
+		public Node(K key, V value, Node<K, V> left, Node<K, V> right) {
 			this.key = key;
 			this.value = value;
-			this.left = left; 	// can be null
-			this.right = right;	// can be null
+			this.left = left; // can be null
+			this.right = right; // can be null
 		}
 
 		/*
@@ -26,14 +28,15 @@ public class BinarySearchTreeMap<K extends Comparable<K>,V> {
 		 */
 		@Override
 		public String toString() {
-			return String.format(" Key = %s, Value = %s\n", this.key,this.value);
+			return String.format(" Key = %s, Value = %s\n", this.key,
+					this.value);
 		}
 	}
 
 	// wrapper
 	public void insert(K key, V value) {
-//		root = insert(this.root, key); // calls recursive 
-		root = insertIterative(this.root, key, value); //calls iterative
+		// root = insert(this.root, key); // calls recursive
+		root = insertIterative(this.root, key, value); // calls iterative
 	}
 
 	/* 1 - Insert recursively */
@@ -53,27 +56,25 @@ public class BinarySearchTreeMap<K extends Comparable<K>,V> {
 		return x;
 	}
 
-	
 	private boolean less(K x, K y) {
 		return x.compareTo(y) < 0 ? true : false;
 	}
-	
+
 	/* 2 - Insert iteratively */
-	public Node<K,V> insertIterative(Node<K,V> x, K key, V value) {
-		Node<K,V> newNode = new Node<K,V>(key,value, null, null);
+	public Node<K, V> insertIterative(Node<K, V> x, K key, V value) {
+		Node<K, V> newNode = new Node<K, V>(key, value, null, null);
 
 		if (x == null) {
 			x = newNode;
 			return x;
 		}
 
-		Node<K,V> curr = x;
+		Node<K, V> curr = x;
 		while (true) {
-			if(key.compareTo(curr.key) == 0){
+			if (key.compareTo(curr.key) == 0) {
 				curr.value = value;
 				break;
-			}
-			else if (key.compareTo(curr.key) < 0) {
+			} else if (key.compareTo(curr.key) < 0) {
 				if (curr.left == null) {
 					curr.left = newNode;
 					break;
@@ -91,9 +92,6 @@ public class BinarySearchTreeMap<K extends Comparable<K>,V> {
 		}
 		return x;
 	}
-	
-	
-	
 
 	public void printTreeInOrder() {
 		System.out.print(" \nInOrder Traversal\n");
@@ -101,14 +99,91 @@ public class BinarySearchTreeMap<K extends Comparable<K>,V> {
 		System.out.println("");
 	}
 
-	private void printTreeInOrder(Node<K,V> node) {
-		if (node == null)
-			return;
-		else {
-			printTreeInOrder(node.left);
-			System.out.println(node);
-			printTreeInOrder(node.right);
+	/* Recursive In-Order */
+	/*
+	 * private void printTreeInOrder(Node<K,V> node) { if (node == null) return;
+	 * else { printTreeInOrder(node.left); System.out.println(node);
+	 * printTreeInOrder(node.right); } }
+	 */
+
+	/* Iterative In-Order */
+	public void printTreeInOrder(final Node<K, V> r) {
+		Deque<Node<K, V>> stack = new ArrayDeque<Node<K, V>>();
+		Node<K, V> x = r;
+
+		while (x != null || !stack.isEmpty()) {
+			while (x != null) {
+				stack.push(x);
+				x = x.left;
+			}
+			// when x is null, out of tree
+			x = stack.pop();
+			System.out.println(x);
+			x = x.right;
 		}
 	}
 
+	
+	public void printTreePostOrder() {
+		System.out.print(" \nPostOrder Traversal\n");
+		printTreePostOrder(this.root);
+		System.out.println("");
+	}
+	
+	public void printTreePostOrder(final Node<K, V> r) {
+		Deque<Node<K, V>> stack = new ArrayDeque<Node<K, V>>();
+		Node<K, V> x = r;
+		Node<K, V> lastVisited = x;
+
+		while (x != null || !stack.isEmpty()) {
+			while (x != null) {
+				stack.push(x);
+				x = x.left;
+			}
+			//after traversing left
+			//traverse right
+			//if no right, then print
+			//keep updated lastPrinted node
+			
+			x = stack.peek();
+			if (x.right == null || x.right == lastVisited) {
+				System.out.println(x);
+				lastVisited = x;
+				x = null;
+				stack.pop();
+			} else {
+				x = x.right;
+			}
+		}
+	}
+
+	public void printTreePreOrder() {
+		System.out.print(" \nPreOrder Traversal\n");
+		printTreePreOrder(this.root);
+		System.out.println("");
+	}
+	
+	public void printTreePreOrder(final Node<K,V> r){
+		Deque<Node<K,V>> stack = new ArrayDeque<Node<K,V>>();
+		Node<K,V> x = r;
+		while(x != null || !stack.isEmpty()){
+			System.out.println(x);
+			if(x.right != null){
+				stack.push(x.right);
+			}
+			if(x.left != null){
+				stack.push(x.left);
+			}
+			
+			if(!stack.isEmpty()){
+				x = stack.pop();
+			}
+			else break;
+				
+		}
+	}
+	
+	
+	
+	
 }
