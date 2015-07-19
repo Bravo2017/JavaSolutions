@@ -4,9 +4,9 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class BinarySearchTreeMap<K extends Comparable<K>, V> {
-	private Node<K, V> root;
+	Node<K, V> root;
 
-	private class Node<K, V> {
+	static class Node<K, V> {
 		K key;
 		V value;
 		Node<K, V> left;
@@ -54,10 +54,6 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 			x.right = insert(x.right, key, value);
 		}
 		return x;
-	}
-
-	private boolean less(K x, K y) {
-		return x.compareTo(y) < 0 ? true : false;
 	}
 
 	/* 2 - Insert iteratively */
@@ -112,14 +108,16 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 		Node<K, V> x = r;
 
 		while (x != null || !stack.isEmpty()) {
-			while (x != null) {
+
+			if (x != null) {
 				stack.push(x);
 				x = x.left;
+			} else {
+				// when x is null, out of tree
+				if (!stack.isEmpty())	x = stack.pop();
+				System.out.println(x);
+				x = x.right;
 			}
-			// when x is null, out of tree
-			x = stack.pop();
-			System.out.println(x);
-			x = x.right;
 		}
 	}
 
@@ -233,6 +231,8 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 				
 		}
 	}*/
+	
+	
 	
 	
 	
