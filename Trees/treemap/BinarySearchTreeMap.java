@@ -250,5 +250,38 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 		}
 	}
 	
+	/**
+	 * Print every level in a row - modified Level order traversal
+	 */
+	public void printLevelOrderModified(){
+		Node<K,V> curr = this.root;
+		
+		int nodeCounterCurrent = 1;
+		int nodeCounterNext = 0;
+		Deque<Node<K,V>> queue = new ArrayDeque<Node<K,V>>();
+		queue.add(curr);
+		
+		while(!queue.isEmpty()){
+			curr = queue.poll();
+
+			if(curr.left != null){
+				queue.offer(curr.left);
+				++nodeCounterNext;
+			}
+			if(curr.right != null){
+				queue.offer(curr.right);
+				++nodeCounterNext;
+			}
+
+			System.out.print("[" + curr.key +" " + curr.value+ " ]"+ " ");
+			
+			if(--nodeCounterCurrent == 0)	{
+				System.out.println();
+				nodeCounterCurrent = nodeCounterNext;
+				nodeCounterNext = 0;
+			}
+		}
+		
+	}
 	
 }
