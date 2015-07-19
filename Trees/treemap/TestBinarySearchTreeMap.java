@@ -1,10 +1,14 @@
 package treemap;
+import treemap.BSTDoubleLinkedList;
 
 public class TestBinarySearchTreeMap {
 	public static void main(String[] args){
 		
-		BinarySearchTreeMap<Integer,String> bst1 = 
-				new BinarySearchTreeMap<Integer,String>();
+//		BinarySearchTreeMap<Integer,String> bst1 = 
+//				new BinarySearchTreeMap<Integer,String>();
+		
+		BSTDoubleLinkedList<Integer,String> bst1
+			= new BSTDoubleLinkedList<Integer, String>();
 		
 		bst1.insert(50,"F");
 		bst1.insert(40,"B");
@@ -16,9 +20,13 @@ public class TestBinarySearchTreeMap {
 //		bst1.insert(37,"I");
 //		bst1.insert(42,"I");
 		
-		bst1.printTreePreOrder();
-		bst1.printTreePostOrder();
-		bst1.printTreeInOrder();
+//		bst1.printTreePreOrder();
+//		bst1.printTreePostOrder();
+//		bst1.printTreeInOrder();
+		
+		
+		bst1.convertToDoubleLinkedList();
+		bst1.printList();
 		
 		//update - test for map
 //		bst1.insert(9,"DD"); //search and update in O(log n)
