@@ -1,5 +1,6 @@
 package treemap;
 
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
@@ -28,7 +29,7 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 		 */
 		@Override
 		public String toString() {
-			return String.format(" Key = %s, Value = %s\n", this.key,
+			return String.format("[ Key = %s, Value = %s ]", this.key,
 					this.value);
 		}
 	}
@@ -96,11 +97,16 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 	}
 
 	/* Recursive In-Order */
-	/*
-	 * private void printTreeInOrder(Node<K,V> node) { if (node == null) return;
-	 * else { printTreeInOrder(node.left); System.out.println(node);
-	 * printTreeInOrder(node.right); } }
-	 */
+	
+	/*private void printTreeInOrder(Node<K, V> node) {
+		if (node == null)
+			return;
+		else {
+			printTreeInOrder(node.left);
+			System.out.println(node);
+			printTreeInOrder(node.right);
+		}
+	}*/
 
 	/* Iterative In-Order */
 	public void printTreeInOrder(final Node<K, V> r) {
@@ -281,7 +287,45 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 				nodeCounterNext = 0;
 			}
 		}
-		
 	}
 	
+	public void printPaths(){
+		Node<K,V>[] paths = (Node<K, V>[])new Node[100];
+		int index = 0;
+		printPaths(root, paths, index);
+	}
+	
+//	public void printPaths(Node<K,V> x, Node[] paths, int index){
+//		//if current node is a leaf - end of a path
+//		//add current node and print
+//		if(x.left == null && x.right == null && index >= 0){
+//			paths[index++] = x;
+//			//print the path
+//			for(int i = 0; i < index; ++i){
+//				System.out.print(paths[i]);
+//			}
+//			System.out.println();
+//		}
+//		else{
+//			paths[index] = x;
+//			
+//			if(x.left!=null)	printPaths(x.left, paths, index+1);
+//			if(x.right!=null)	printPaths(x.right, paths, index+1);
+//		}
+//	}
+	
+	public void printPaths(Node<K,V> x, Node[] paths, int index){
+		if(x == null)	return;
+		
+		paths[index++] = x;
+		if(x.left == null && x.right == null){
+			for(int i = 0; i < index; ++i){
+				System.out.print(paths[i]);
+			}
+			System.out.println();
+		}else{
+			printPaths(x.left, paths, index+1);
+			printPaths(x.right, paths, index+1);
+		}
+	}
 }
