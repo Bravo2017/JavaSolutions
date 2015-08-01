@@ -1,21 +1,17 @@
 package StringProblems;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 
 /**
  * replaceLetter() used a char[] for all string manipulations, 
  * replaceLetter2() uses string method string.charAt(). 
  * both build a new char array with modified chars
- * Performace- 
+ * Performance
  * for a very long string, replaceLetter() has twice better performce(half time)
  * to do the operation,
  * 
  * Algorithmically, replaceLetter() is 3xO(n)
  * replaceLetter2() is 2xO(n)
-
-*/
+ */
 
 public class ReplaceChar {
 
