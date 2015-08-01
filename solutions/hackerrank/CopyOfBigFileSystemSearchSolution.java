@@ -3,7 +3,7 @@ import java.util.*;
 //WORKING SOLUTION - ACCEPTED BY HACKER_RANK
 // A cleaner solution 
 
-public class CopyOfBigFileSystemSearchSolution {
+/*public class CopyOfBigFileSystemSearchSolution {
 
 	DataFile[] inputFiles;
 	QueryFile[] allQueries;
@@ -245,4 +245,4 @@ class DataFile {
 				mapFileNumber.put(key, (prevListing+1) );
 		}
 	}
-}
+}*/
