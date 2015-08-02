@@ -67,8 +67,6 @@ public class Testing {
 //		
 //		 for (int i=0; i<4; i++) {
 //			 Person person = persons[i];
-//			 System.out.println(person);
-		
 //			 String lastName = person.getLastName();
 //			 String firstName = person.getFirstName();
 //			 int age = person.getAge();
@@ -76,19 +74,14 @@ public class Testing {
 //		 }
 		 
 		
-//		 Arrays.sort(persons, new FirstNameComparator());
-//		 System.out.println();
-//		 System.out.println("Sorted by first name");
-//		
-//		 for (int i=0; i<4; i++) {
-//			 Person person = persons[i];
-//			 System.out.println(person);
-			 
-//			 String lastName = person.getLastName();
-//			 String firstName = person.getFirstName();
-//			 int age = person.getAge();
-//			 System.out.println(lastName + ", " + firstName + ". Age:" + age);
-//		 }
+		 Arrays.sort(persons, new FirstNameComparator());
+		 System.out.println();
+		 System.out.println("Sorted by first name");
+
+		 for (int i=0; i<4; i++) {
+			 Person person = persons[i];
+			 System.out.println(person);
+		 }
 		
 		
 		 System.out.println();
