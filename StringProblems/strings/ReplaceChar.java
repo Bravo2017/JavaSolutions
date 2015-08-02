@@ -1,4 +1,4 @@
-package StringProblems;
+package strings;
 import java.io.IOException;
 
 /**
@@ -16,9 +16,10 @@ import java.io.IOException;
 public class ReplaceChar {
 
 	public static void main(String[] args) throws IOException {
-		String testString = new String("Hello Mr How Do You DO ");
+		String testString = new String("Hello Mr How Do You DO TOO");
 		
-		//read from an input file - and test performance
+		/*read from an input file - and test performance*/
+
 //		String path = "E:\\Programming\\java\\passage.txt";
 //		File fileName = new File(path); 
 //		FileReader fr = new FileReader(fileName);
@@ -31,11 +32,10 @@ public class ReplaceChar {
 //		System.out.println("Time = " + (endTime - startTime));
 	
 		
-		System.out.println(replaceLetters2(testString));
+		System.out.println(replaceLetters(testString));
 	}
 	
-	//assuming this to be fast - with 3xO(n)
-	public static void replaceLetters(String someString){
+	public static String replaceLetters(String someString){
 		int length = someString.length();
 		char[] arr = someString.toCharArray(); //for faster performance - O(n)
 		
@@ -45,7 +45,34 @@ public class ReplaceChar {
 			if(arr[i] == ' ') ++_spaces;
 		}
 		
-		//scanning and replacing - O(n)
+		//scanning and replacing - O(n) 
+		int newLength = length + 2*_spaces;
+		char[] arrNew = new char[newLength];
+		
+		for(int i = length-1, j = newLength-1 ; ( i >= 0 && j >= 0 ); --i){
+			if(arr[i] == ' '){
+				arrNew[j--] = '0';
+				arrNew[j--] = '2';
+				arrNew[j--] = '%';
+			}else{
+				arrNew[j--] = arr[i];
+			}
+		}
+		return new String(arrNew);
+	}
+	
+	//assuming this to be fast - with 3xO(n)
+	/*public static void replaceLetters(String someString){
+		int length = someString.length();
+		char[] arr = someString.toCharArray(); //for faster performance - O(n)
+		
+		//scan the string once to find the number of spaces
+		int _spaces = 0;
+		for(int i = 0 ; i < length ; ++i){  // O(n)
+			if(arr[i] == ' ') ++_spaces;
+		}
+		
+		//scanning and replacing - O(n) 
 		int newLength = length + 2*_spaces;
 		char[] arrNew = new char[newLength];
 		
@@ -59,7 +86,7 @@ public class ReplaceChar {
 			}
 		}
 		//return new String(arrNew);
-	}	
+	}*/	
 	
 	public static String replaceLetters2(String someString){
 		int length = someString.length();
