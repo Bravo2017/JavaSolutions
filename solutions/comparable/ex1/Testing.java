@@ -61,17 +61,17 @@ public class Testing {
 		
 		
 
-//		 Arrays.sort(persons, new LastNameComparator());
-//		 System.out.println();
-//		 System.out.println("Sorted by last name");
-//		
-//		 for (int i=0; i<4; i++) {
-//			 Person person = persons[i];
-//			 String lastName = person.getLastName();
-//			 String firstName = person.getFirstName();
-//			 int age = person.getAge();
-//			 System.out.println(lastName + ", " + firstName + ". Age:" + age);
-//		 }
+		 Arrays.sort(persons, new LastNameComparator());
+		 System.out.println();
+		 System.out.println("Sorted by last name");
+		
+		 for (int i=0; i<4; i++) {
+			 Person person = persons[i];
+			 String lastName = person.getLastName();
+			 String firstName = person.getFirstName();
+			 int age = person.getAge();
+			 System.out.println(lastName + ", " + firstName + ". Age:" + age);
+		 }
 		 
 		
 		 Arrays.sort(persons, new FirstNameComparator());
