@@ -1,5 +1,5 @@
 package strings;
-
+//Complete Implmentation
 public class BasicStringCompression {
 
 	public static void main(String[] args) {
@@ -11,13 +11,12 @@ public class BasicStringCompression {
 
 	// compress string
 	public String compressString(String input) {
-
 		int len = input.length();
-		int size = compressLength(input);
+		int size = compressLength(input); //get length of compressed string
 		if (size >= len)
-			return input;
+			return input; //no need to compress
 
-		char[] array = new char[size];
+		char[] array = new char[size]; //compressed string array
 		int index = 0;
 		char lastSeen = input.charAt(0);
 		int count = 1;
@@ -36,7 +35,9 @@ public class BasicStringCompression {
 
 	int insertIntoArray(int index, char[] array, int count, char lastSeen) {
 		array[index++] = lastSeen;
+		//convert the integer into a String - can have more than one char
 		String numInStr = String.valueOf(count);
+		// pick each char and concatenate into the array
 		for (int i = 0; i < numInStr.length(); ++i) {
 			array[index++] = numInStr.charAt(i);
 		}
