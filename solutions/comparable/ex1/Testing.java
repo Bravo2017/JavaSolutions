@@ -40,24 +40,22 @@ public class Testing {
 			System.out.println(lastName + ", " + firstName + ". Age:" + age);
 		}
 
-
 		
-		/*Example of using the Comparable interface in sorted data structure*/
-//		Set<Person> personSet = new TreeSet<Person>();
-//		for(Person p : persons){
-//			personSet.add(p);
-//		}
-//		
-//		//print treeSet using Iterator objects
-//		Iterator<Person> it = personSet.iterator();
-//		while(it.hasNext()){
-//			Person person = it.next();
-//			String lastName = person.getLastName();
-//			String firstName = person.getFirstName();
-//			int age = person.getAge();
-//			System.out.println(lastName + ", " + firstName + ". Age:" + age);
-//			
-//		}
+		/* Example of using the Comparable interface in sorted data structure */
+		Set<Person> personSet = new TreeSet<Person>();
+		for(Person p : persons){
+			personSet.add(p);
+		}
+		
+		//print treeSet using Iterator objects
+		System.out.println();
+		System.out.println("Print data in Tree");
+		Iterator<Person> it = personSet.iterator();
+		while(it.hasNext()){
+			Person person = it.next();
+			System.out.println(person);
+			
+		}
 		
 		
 
