@@ -20,7 +20,7 @@ public class LinkedListDetectAndRemoveLoops{
 		Node c = new Node("a", b);
 		Node d = new Node("d", c);
 		Node e = new Node("e", d);
-		a.next = c; //creates the loop
+		a.next = e; //creates the loop
 		this.head = e;
 	}
 	
