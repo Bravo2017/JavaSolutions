@@ -37,7 +37,7 @@ public class LinkedListDetectAndRemoveLoops{
 		// thus current node points to a list- making a loop. 
 		// update current node's next to NULL- loop broken.
 		while (ref_curr != null && ref_curr.next != null) {
-			if (!nodes.add(ref_curr.next)) {
+			if (!nodes.add(ref_curr.next)) { //if cannot add next node, then its a loop. modify current
 				System.out.println("Loop found - removing...!!!");
 				ref_curr.next = null;
 //				break;	//not necessary - as ref becomes null in the following line
