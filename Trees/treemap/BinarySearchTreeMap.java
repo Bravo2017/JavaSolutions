@@ -1,6 +1,5 @@
 package treemap;
 
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 
@@ -17,7 +16,7 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 		public Node(K key, V value, Node<K, V> left, Node<K, V> right) {
 			this.key = key;
 			this.value = value;
-			this.left = left; // can be null
+			this.left = left; 	// can be null
 			this.right = right; // can be null
 		}
 
