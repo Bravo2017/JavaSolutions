@@ -101,6 +101,26 @@ public class LinkedList<E extends Comparable<E>> {
 	}
 	
 	
+	//print in reverse 
+	//similar to get Nth from end
+	//if length of list is known, run for loop, call getNthElementToLast() from 1 to N;
+	
+	//implement without calculating length - recursive 
+	public void printListReverse(){
+		printListReverse(head,new IndexValue());
+	}
+	private class IndexValue{
+		int x = -1; //if starting index = 0, else x = 0 if starting index = 1
+	}
+	private void printListReverse(Node<E> x, IndexValue index){
+		if(x == null) return ;
+		printListReverse(x.next, index);
+		index.x += 1;
+		System.out.printf("[%d]: %s%n", index.x, x);
+	}
+	
+	
+	
 	//add a node to a sorted - increasing linked list
 	public void sortedListVer2(Node<E> newNode) {
 		E data = newNode.getKey();
