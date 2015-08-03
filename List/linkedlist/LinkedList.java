@@ -496,14 +496,14 @@ public class LinkedList<E extends Comparable<E>> {
 		
 		// Need to override equals - else two nodes with same key will be
 		// two different objects with differnet hashCodes
-//		@Override
-//		public boolean equals(Object o){
-//			if(o == null )return false;
-//			if(o == this)	return true;
-//			if(!(o instanceof Node)) 	return false;
-//			Node<E> that = (Node<E>)o;
-//			return this.key.equals(that.key);
-//		}
+		@Override
+		public boolean equals(Object o){
+			if(o == null )return false;
+			if(o == this)	return true;
+			if(!(o instanceof Node)) 	return false;
+			Node<E> that = (Node<E>)o;
+			return this.key.equals(that.key);
+		}
 		
 		@Override
 		public int hashCode(){
