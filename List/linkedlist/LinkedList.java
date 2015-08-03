@@ -407,7 +407,6 @@ public class LinkedList<E extends Comparable<E>> {
 				moveENode(x);
 			else
 				moveGNode(x);
-			
 			x = next;
 		}
 		
@@ -431,7 +430,7 @@ public class LinkedList<E extends Comparable<E>> {
 		else{}
 		
 	}
-
+	
 	private void moveLNode(Node<E> x){
 		if(headLessThan == null){
 			headLessThan = x;
