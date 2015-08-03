@@ -383,10 +383,10 @@ public class LinkedList<E extends Comparable<E>> {
 	 */
 	
 	Node<E> headLessThan = null;
-	Node<E> headEqualTo = null;
-	Node<E> headGreaterThan = null;
 	Node<E> tailLessThan = headLessThan;
+	Node<E> headEqualTo = null;
 	Node<E> tailEqualTo = headEqualTo;
+	Node<E> headGreaterThan = null;
 	Node<E> tailGreaterThan = headGreaterThan;
 
 	public void partitionList(E val){
@@ -395,7 +395,8 @@ public class LinkedList<E extends Comparable<E>> {
 //		Node<E> headLessThan = null;Node<E> headEqualTo = null;Node<E> headGreaterThan = null;
 //		Node<E> tailLessThan = null;Node<E> tailEqualTo = null;Node<E> tailGreaterThan = null;
 
-		Node<E> x = head;Node<E> next = null;
+		Node<E> x = head;
+		Node<E> next = null;
 		while(x != null){
 			next = x.next;
 			x.next = null;
@@ -412,7 +413,7 @@ public class LinkedList<E extends Comparable<E>> {
 		
 		//merge all lists
 		if(headLessThan != null){
-			head = headLessThan;
+			head = headLessThan; //Head of merged list
 			if(headEqualTo != null)	{
 				tailLessThan.next = headEqualTo;
 				if(headGreaterThan != null)	tailEqualTo.next = headGreaterThan;
