@@ -31,16 +31,19 @@ class Person implements Comparable<Person> {
 	}
 
 	@Override
-	public int compareTo(Person o) throws ClassCastException, NullPointerException {
-		if(o == null)	throw new NullPointerException("Null Object passed");
+	public int compareTo(Person o) throws ClassCastException,
+			NullPointerException {
+		if (o == null)
+			throw new NullPointerException("Null Object passed");
 		if (!(o instanceof Person))
 			throw new ClassCastException("A Person object expected.");
-		int anotherPersonAge = ((Person) o).getAge();
+		int anotherPersonAge = o.getAge();
 		return this.age - anotherPersonAge;
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return String.format(lastName + ", " + firstName + ". Age:" + age);
 	}
-	
+
 }

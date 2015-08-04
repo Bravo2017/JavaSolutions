@@ -35,8 +35,8 @@ public class BinarySearchTree<K extends Comparable<K>> {
 
 	// wrapper
 	public void insert(K key) {
-//		root = insert(this.root, key); // calls recursive 
-		root = insertIterative(this.root, key); //calls iterative
+		// root = insert(this.root, key); // calls recursive
+		root = insertIterative(this.root, key); // calls iterative
 	}
 
 	/* 1 - Insert recursively */
@@ -67,10 +67,9 @@ public class BinarySearchTree<K extends Comparable<K>> {
 
 		Node<K> current = x;
 		while (true) {
-			if(key.compareTo(current.key) == 0){
+			if (key.compareTo(current.key) == 0) {
 				break;
-			}
-			else if (key.compareTo(current.key) < 0) {
+			} else if (key.compareTo(current.key) < 0) {
 				if (current.left == null) {
 					current.left = newNode;
 					break;
@@ -88,9 +87,6 @@ public class BinarySearchTree<K extends Comparable<K>> {
 		}
 		return x;
 	}
-	
-	
-	
 
 	public void printTreeInOrder() {
 		System.out.print("InOrder Traversal\n");

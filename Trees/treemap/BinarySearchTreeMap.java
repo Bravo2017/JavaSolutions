@@ -16,7 +16,7 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 		public Node(K key, V value, Node<K, V> left, Node<K, V> right) {
 			this.key = key;
 			this.value = value;
-			this.left = left; 	// can be null
+			this.left = left; // can be null
 			this.right = right; // can be null
 		}
 
@@ -96,16 +96,12 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 	}
 
 	/* Recursive In-Order */
-	
-	/*private void printTreeInOrder(Node<K, V> node) {
-		if (node == null)
-			return;
-		else {
-			printTreeInOrder(node.left);
-			System.out.println(node);
-			printTreeInOrder(node.right);
-		}
-	}*/
+
+	/*
+	 * private void printTreeInOrder(Node<K, V> node) { if (node == null)
+	 * return; else { printTreeInOrder(node.left); System.out.println(node);
+	 * printTreeInOrder(node.right); } }
+	 */
 
 	/* Iterative In-Order */
 	public void printTreeInOrder(final Node<K, V> r) {
@@ -119,48 +115,36 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 				x = x.left;
 			} else {
 				// when x is null, out of tree
-				if (!stack.isEmpty())	x = stack.pop();
+				if (!stack.isEmpty())
+					x = stack.pop();
 				System.out.println(x);
 				x = x.right;
 			}
 		}
 	}
-	
+
 	public void printTreePostOrder() {
 		System.out.print(" \nPostOrder Traversal\n");
 		printTreePostOrder(this.root);
 		System.out.println("");
 	}
-	
-	/* Iterative PostOrder */
-	/*public void printTreePostOrder(final Node<K, V> r) {
-		Deque<Node<K, V>> stack = new ArrayDeque<Node<K, V>>();
-		Node<K, V> x = r;
-		Node<K, V> lastVisited = x;
 
-		while (x != null || !stack.isEmpty()) {
-			while (x != null) {
-				stack.push(x);
-				x = x.left;
-			}
-			//after traversing left
-			//traverse right
-			//if no right, then print
-			//keep updated lastPrinted node
-			
-			x = stack.peek();
-			if (x.right == null || x.right == lastVisited) {
-				System.out.println(x);
-				lastVisited = x;
-				x = null;
-				stack.pop();
-			} else {
-				x = x.right;
-			}
-		}
-	}*/
-	
-	/* Iterative PostOrder - single while loop, if-else constructs*/
+	/* Iterative PostOrder */
+	/*
+	 * public void printTreePostOrder(final Node<K, V> r) { Deque<Node<K, V>>
+	 * stack = new ArrayDeque<Node<K, V>>(); Node<K, V> x = r; Node<K, V>
+	 * lastVisited = x;
+	 * 
+	 * while (x != null || !stack.isEmpty()) { while (x != null) {
+	 * stack.push(x); x = x.left; } //after traversing left //traverse right
+	 * //if no right, then print //keep updated lastPrinted node
+	 * 
+	 * x = stack.peek(); if (x.right == null || x.right == lastVisited) {
+	 * System.out.println(x); lastVisited = x; x = null; stack.pop(); } else { x
+	 * = x.right; } } }
+	 */
+
+	/* Iterative PostOrder - single while loop, if-else constructs */
 	public void printTreePostOrder(final Node<K, V> r) {
 		Deque<Node<K, V>> stack = new ArrayDeque<Node<K, V>>();
 		Node<K, V> x = r;
@@ -171,24 +155,23 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 				stack.push(x);
 				x = x.left;
 			}
-			//after traversing left
-			//traverse right
-			//if no right, then print
-			//update lastPrinted node
-			else{
+			// after traversing left
+			// traverse right
+			// if no right, then print
+			// update lastPrinted node
+			else {
 				x = stack.peek();
 				if (x.right == null || x.right == lastVisited) {
 					System.out.println(x);
 					lastVisited = x;
-					x = null; //important step
-					stack.pop(); //remove visited node from stack
-				} 
-				else {
+					x = null; // important step
+					stack.pop(); // remove visited node from stack
+				} else {
 					x = x.right;
-				}//end of inner else
-			}//end of outer else
-		}//end of while loop
-	}//end of method
+				}// end of inner else
+			}// end of outer else
+		}// end of while loop
+	}// end of method
 
 	public void printTreePreOrder() {
 		System.out.print(" \nPreOrder Traversal\n");
@@ -197,134 +180,129 @@ public class BinarySearchTreeMap<K extends Comparable<K>, V> {
 	}
 
 	/* Iterative PreOrder - cleaner code */
-	public void printTreePreOrder(final Node<K,V> r){
-		Deque<Node<K,V>> stack = new ArrayDeque<Node<K,V>>();
-		Node<K,V> x = r;
-		
-		while(x != null || !stack.isEmpty()){
-			if(x != null){ // x can be null
+	public void printTreePreOrder(final Node<K, V> r) {
+		Deque<Node<K, V>> stack = new ArrayDeque<Node<K, V>>();
+		Node<K, V> x = r;
+
+		while (x != null || !stack.isEmpty()) {
+			if (x != null) { // x can be null
 				System.out.println(x);
-				if(x.right != null){  stack.push(x.right); }
+				if (x.right != null) {
+					stack.push(x.right);
+				}
 				x = x.left;
-			}else{ //x is null, pop the top node
-				if(!stack.isEmpty()){ //if stack empty, do nothing
-					x = stack.pop();	
+			} else { // x is null, pop the top node
+				if (!stack.isEmpty()) { // if stack empty, do nothing
+					x = stack.pop();
 				}
 			}
 		}
 	}
-	
-	
+
 	/* Iterative PreOrder */
-	/*public void printTreePreOrder(final Node<K,V> r){
-		Deque<Node<K,V>> stack = new ArrayDeque<Node<K,V>>();
-		Node<K,V> x = r;
-		while(x != null || !stack.isEmpty()){
-			System.out.println(x);
-			if(x.right != null){
-				stack.push(x.right);
-			}
-			if(x.left != null){
-				stack.push(x.left);
-			}
-			
-			if(!stack.isEmpty()){
-				x = stack.pop();
-			}
-			else break;
-				
-		}
-	}*/
-	
+	/*
+	 * public void printTreePreOrder(final Node<K,V> r){ Deque<Node<K,V>> stack
+	 * = new ArrayDeque<Node<K,V>>(); Node<K,V> x = r; while(x != null ||
+	 * !stack.isEmpty()){ System.out.println(x); if(x.right != null){
+	 * stack.push(x.right); } if(x.left != null){ stack.push(x.left); }
+	 * 
+	 * if(!stack.isEmpty()){ x = stack.pop(); } else break;
+	 * 
+	 * } }
+	 */
+
 	public void printLevelOrder() {
 		System.out.print(" \nLevelOrder Traversal\n");
 		printLevelOrder(this.root);
 		System.out.println("");
 	}
-	
-	public void printLevelOrder(final Node<K,V> x){
-		Node<K,V> curr = x;
-		Deque<Node<K,V>> queue = new ArrayDeque<Node<K,V>>();
+
+	public void printLevelOrder(final Node<K, V> x) {
+		Node<K, V> curr = x;
+		Deque<Node<K, V>> queue = new ArrayDeque<Node<K, V>>();
 		queue.add(curr);
-		
-		while(!queue.isEmpty()){
+
+		while (!queue.isEmpty()) {
 			curr = queue.poll();
 			System.out.println(curr);
-			if(curr.left != null)	queue.offer(curr.left);
-			if(curr.right != null)	queue.offer(curr.right);
+			if (curr.left != null)
+				queue.offer(curr.left);
+			if (curr.right != null)
+				queue.offer(curr.right);
 		}
 	}
-	
+
 	/**
 	 * Print every level in a row - modified Level order traversal
 	 */
-	public void printLevelOrderModified(){
-		Node<K,V> curr = this.root;
-		
+	public void printLevelOrderModified() {
+		Node<K, V> curr = this.root;
+
 		int nodeCounterCurrent = 1;
 		int nodeCounterNext = 0;
-		Deque<Node<K,V>> queue = new ArrayDeque<Node<K,V>>();
+		Deque<Node<K, V>> queue = new ArrayDeque<Node<K, V>>();
 		queue.add(curr);
-		
-		while(!queue.isEmpty()){
+
+		while (!queue.isEmpty()) {
 			curr = queue.poll();
 
-			if(curr.left != null){
+			if (curr.left != null) {
 				queue.offer(curr.left);
 				++nodeCounterNext;
 			}
-			if(curr.right != null){
+			if (curr.right != null) {
 				queue.offer(curr.right);
 				++nodeCounterNext;
 			}
 
-			System.out.print("[" + curr.key +" " + curr.value+ " ]"+ " ");
-			
-			if(--nodeCounterCurrent == 0)	{
+			System.out.print("[" + curr.key + " " + curr.value + " ]" + " ");
+
+			if (--nodeCounterCurrent == 0) {
 				System.out.println();
 				nodeCounterCurrent = nodeCounterNext;
 				nodeCounterNext = 0;
 			}
 		}
 	}
-	
-	public void printPaths(){
-		Node<K,V>[] paths = (Node<K, V>[])new Node[100];
+
+	public void printPaths() {
+		Node<K, V>[] paths = new Node[100];
 		int index = 0;
 		printPaths(root, paths, index);
 	}
-	
-//	public void printPaths(Node<K,V> x, Node[] paths, int index){
-//		//if current node is a leaf - end of a path
-//		//add current node and print
-//		if(x.left == null && x.right == null && index >= 0){
-//			paths[index++] = x;
-//			//print the path
-//			for(int i = 0; i < index; ++i){
-//				System.out.print(paths[i]);
-//			}
-//			System.out.println();
-//		}
-//		else{
-//			paths[index] = x;
-//			
-//			if(x.left!=null)	printPaths(x.left, paths, index+1);
-//			if(x.right!=null)	printPaths(x.right, paths, index+1);
-//		}
-//	}
-	
-	public void printPaths(Node<K,V> x, Node[] paths, int index){
-		if(x == null)	return;
-		
+
+	// public void printPaths(Node<K,V> x, Node[] paths, int index){
+	// //if current node is a leaf - end of a path
+	// //add current node and print
+	// if(x.left == null && x.right == null && index >= 0){
+	// paths[index++] = x;
+	// //print the path
+	// for(int i = 0; i < index; ++i){
+	// System.out.print(paths[i]);
+	// }
+	// System.out.println();
+	// }
+	// else{
+	// paths[index] = x;
+	//
+	// if(x.left!=null) printPaths(x.left, paths, index+1);
+	// if(x.right!=null) printPaths(x.right, paths, index+1);
+	// }
+	// }
+
+	public void printPaths(Node<K, V> x, Node[] paths, int index) {
+		if (x == null)
+			return;
+
 		paths[index++] = x;
-		if(x.left == null && x.right == null){
-			for(int i = 0; i < index; ++i){
+		if (x.left == null && x.right == null) {
+			for (int i = 0; i < index; ++i) {
 				System.out.print(paths[i]);
 			}
 			System.out.println();
-		}else{
-			printPaths(x.left, paths, index+1);
-			printPaths(x.right, paths, index+1);
+		} else {
+			printPaths(x.left, paths, index + 1);
+			printPaths(x.right, paths, index + 1);
 		}
 	}
 }

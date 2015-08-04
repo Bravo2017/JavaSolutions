@@ -1,6 +1,5 @@
 package hashmap;
 
-import java.util.Map;
 import java.util.Objects;
 
 /*
@@ -9,32 +8,33 @@ import java.util.Objects;
  * bucket array of type Node, which stores Keys and Values
  */
 
-public class StudentRecordII<K,V> {
+public class StudentRecordII<K, V> {
 	static final int _CAPACITY = 37;
 	int size;
-	Node<K,V>[] buckets; // an array of Entry nodes - bucket array
+	Node<K, V>[] buckets; // an array of Entry nodes - bucket array
 
 	// constructor
 	@SuppressWarnings("unchecked")
 	public StudentRecordII() {
 		size = 0;
-		buckets = (Node<K, V>[])new Node[_CAPACITY];
+		buckets = new Node[_CAPACITY];
 		// initialize each array
 		for (int i = 0; i < buckets.length; ++i) {
-			buckets[i] = null; // initialize to null,not new bucket(space efficient)
+			buckets[i] = null; // initialize to null,not new bucket(space
+								// efficient)
 		}
 	}
 
 	private final int hash(Object key) {
 		final int MASK = 0x7FFFFFFF;
-        return (key == null) ? 0 : ((key.hashCode() & MASK) % _CAPACITY );
-    }
+		return (key == null) ? 0 : ((key.hashCode() & MASK) % _CAPACITY);
+	}
 
 	// insert a new key, value
 	public void put(K key, V newValue) {
 		int index = hash(key); // O(1)
-		Node<K,V> tempNewNode = new Node<K, V>(key, newValue, null);
-		
+		Node<K, V> tempNewNode = new Node<K, V>(key, newValue, null);
+
 		// XXXX- TO BE REMOVED
 		// System.out.printf("Key = %s, Index = %d\n\n", key, index);
 
@@ -43,14 +43,13 @@ public class StudentRecordII<K,V> {
 			buckets[index] = tempNewNode;
 			++size;
 			return;
-		} 
-		else {// find and update the student data
-			Node<K,V> current = buckets[index];
-			while(current != null){
-				if(current.getKey().equals(key)){
+		} else {// find and update the student data
+			Node<K, V> current = buckets[index];
+			while (current != null) {
+				if (current.getKey().equals(key)) {
 					current.setValue(newValue);
 					return;
-				}else{
+				} else {
 					current = current.next;
 				}
 			}
@@ -93,16 +92,17 @@ public class StudentRecordII<K,V> {
 		else {
 			for (int i = 0; i < buckets.length; ++i) {
 				if (!(buckets[i] == null)) {
-					Node<K,V> current = buckets[i];
+					Node<K, V> current = buckets[i];
 					display(current);
 				}
 			}
 		}
 	}
-	
+
 	static int counter = 0; // not a part of hashmap implementation
-	private void display(Node<K,V> current){
-		while(current != null){
+
+	private void display(Node<K, V> current) {
+		while (current != null) {
 			System.out.println(++counter + ".  " + current);
 			current = current.next;
 		}
@@ -110,6 +110,7 @@ public class StudentRecordII<K,V> {
 
 	/**
 	 * Static Inner class
+	 * 
 	 * @param <K>
 	 * @param <V>
 	 */
@@ -124,15 +125,17 @@ public class StudentRecordII<K,V> {
 			this.next = next;
 		}
 
-//		public final String toString() {
-//			return key + "=" + value;
-//		}
-		
-		//modified since value also has the key.
+		// public final String toString() {
+		// return key + "=" + value;
+		// }
+
+		// modified since value also has the key.
+		@Override
 		public final String toString() {
 			return value.toString();
 		}
 
+		@Override
 		public final int hashCode() {
 			return Objects.hashCode(key) ^ Objects.hashCode(value);
 		}
@@ -151,6 +154,7 @@ public class StudentRecordII<K,V> {
 			return value;
 		}
 
+		@Override
 		public final boolean equals(Object o) {
 			if (o == this)
 				return true;

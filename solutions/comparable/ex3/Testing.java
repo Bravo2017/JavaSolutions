@@ -2,10 +2,8 @@ package comparable.ex3;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
-
 
 public class Testing {
 	public static void main(String[] args) {
@@ -55,8 +53,9 @@ public class Testing {
 			System.out.println(person);
 
 		}
-		
-		// calling a static inner class - static hence use new ClassName.constructor
+
+		// calling a static inner class - static hence use new
+		// ClassName.constructor
 		Arrays.sort(persons, new Person.LastNameComparator());
 		System.out.println();
 		System.out.println("Sorted by last name");
@@ -77,8 +76,6 @@ public class Testing {
 			Person person = persons[i];
 			System.out.println(person);
 		}
-		
-		
 
 		System.out.println();
 		Arrays.sort(persons); // uses the Comparable interface and overridden

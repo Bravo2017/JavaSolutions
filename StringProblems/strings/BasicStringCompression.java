@@ -1,4 +1,5 @@
 package strings;
+
 //Complete Implmentation
 public class BasicStringCompression {
 
@@ -12,11 +13,11 @@ public class BasicStringCompression {
 	// compress string
 	public String compressString(String input) {
 		int len = input.length();
-		int size = compressLength(input); //get length of compressed string
+		int size = compressLength(input); // get length of compressed string
 		if (size >= len)
-			return input; //no need to compress
+			return input; // no need to compress
 
-		char[] array = new char[size]; //compressed string array
+		char[] array = new char[size]; // compressed string array
 		int index = 0;
 		char lastSeen = input.charAt(0);
 		int count = 1;
@@ -35,7 +36,7 @@ public class BasicStringCompression {
 
 	int insertIntoArray(int index, char[] array, int count, char lastSeen) {
 		array[index++] = lastSeen;
-		//convert the integer into a String - can have more than one char
+		// convert the integer into a String - can have more than one char
 		String numInStr = String.valueOf(count);
 		// pick each char and concatenate into the array
 		for (int i = 0; i < numInStr.length(); ++i) {
@@ -59,7 +60,7 @@ public class BasicStringCompression {
 			else {
 				size += 1; // for the letter
 				// convert count to string and get length- for multidigit count
-				size += String.valueOf(count).length();// 
+				size += String.valueOf(count).length();//
 				lastSeen = str.charAt(i);// update last seen
 				count = 1; // reset count to 1.
 			}

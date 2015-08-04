@@ -2,10 +2,8 @@ package comparable.ex1;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
-
 
 public class Testing {
 	public static void main(String[] args) {
@@ -40,60 +38,51 @@ public class Testing {
 			System.out.println(lastName + ", " + firstName + ". Age:" + age);
 		}
 
-		
 		/* Example of using the Comparable interface in sorted data structure */
 		Set<Person> personSet = new TreeSet<Person>();
-		for(Person p : persons){
+		for (Person p : persons) {
 			personSet.add(p);
 		}
-		
-		//print treeSet using Iterator objects
+
+		// print treeSet using Iterator objects
 		System.out.println();
 		System.out.println("Print data in Tree");
 		Iterator<Person> it = personSet.iterator();
-		while(it.hasNext()){
+		while (it.hasNext()) {
 			Person person = it.next();
 			System.out.println(person);
-			
+
 		}
-		
-		
 
-		 Arrays.sort(persons, new LastNameComparator());
-		 System.out.println();
-		 System.out.println("Sorted by last name");
-		
-		 for (int i=0; i<4; i++) {
-			 Person person = persons[i];
-			 String lastName = person.getLastName();
-			 String firstName = person.getFirstName();
-			 int age = person.getAge();
-			 System.out.println(lastName + ", " + firstName + ". Age:" + age);
-		 }
-		 
-		
-		 Arrays.sort(persons, new FirstNameComparator());
-		 System.out.println();
-		 System.out.println("Sorted by first name");
+		Arrays.sort(persons, new LastNameComparator());
+		System.out.println();
+		System.out.println("Sorted by last name");
 
-		 for (int i=0; i<4; i++) {
-			 Person person = persons[i];
-			 System.out.println(person);
-		 }
-		
-		
-		 System.out.println();
-		 Arrays.sort(persons); //uses the Comparable interface and overridden compareTo()
-		 System.out.println("Sorted by age");
-		 
-		 for (Person person : persons) {
-			 System.out.println(person);
-		 }
-		
+		for (int i = 0; i < 4; i++) {
+			Person person = persons[i];
+			String lastName = person.getLastName();
+			String firstName = person.getFirstName();
+			int age = person.getAge();
+			System.out.println(lastName + ", " + firstName + ". Age:" + age);
+		}
 
-		
-		
-		
-		
+		Arrays.sort(persons, new FirstNameComparator());
+		System.out.println();
+		System.out.println("Sorted by first name");
+
+		for (int i = 0; i < 4; i++) {
+			Person person = persons[i];
+			System.out.println(person);
+		}
+
+		System.out.println();
+		Arrays.sort(persons); // uses the Comparable interface and overridden
+								// compareTo()
+		System.out.println("Sorted by age");
+
+		for (Person person : persons) {
+			System.out.println(person);
+		}
+
 	}
 }

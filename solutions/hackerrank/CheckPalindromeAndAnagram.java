@@ -5,24 +5,24 @@ import java.util.*;
 public class CheckPalindromeAndAnagram {
 
 	public static void main(String[] args) {
-		
+
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter a string:");
 		String line = in.nextLine();
 		in.close();
-		
+
 		if (checkForPalindrome(line)) {
 			System.out.println("YES");
 		} else
 			System.out.println("NO");
-		
+
 	}
-	
-	
+
 	public static boolean checkForPalindrome(String str) {
-		// a string can be a palindrome if it has same characters from the 
-		// start and end. Thus, there must be even count and one odd count only(odd len)
-		
+		// a string can be a palindrome if it has same characters from the
+		// start and end. Thus, there must be even count and one odd count
+		// only(odd len)
+
 		// only english letters
 		int[] count = new int[26];
 		int index = 0;

@@ -2,7 +2,6 @@ package comparable.ex2;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -56,7 +55,7 @@ public class Testing {
 		}
 
 		System.out.println("\nUSING ANONYMOUS CLASSES");
-		
+
 		Arrays.sort(persons, Person.LastNameComparator);
 		System.out.println();
 		System.out.println("Sorted by last name");
@@ -77,8 +76,6 @@ public class Testing {
 			Person person = persons[i];
 			System.out.println(person);
 		}
-		
-		
 
 		System.out.println();
 		Arrays.sort(persons); // uses the Comparable interface and overridden

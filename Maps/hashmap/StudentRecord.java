@@ -16,7 +16,8 @@ public class StudentRecord {
 		buckets = new LinkedListEntry[_CAPACITY];
 		// initialize each array
 		for (int i = 0; i < buckets.length; ++i) {
-			buckets[i] = null; // initializing to null,not to a new bucket(space efficient)
+			buckets[i] = null; // initializing to null,not to a new bucket(space
+								// efficient)
 		}
 	}
 
@@ -30,7 +31,7 @@ public class StudentRecord {
 		int index = hash(key); // O(1)
 
 		// XXXX- TO BE REMOVED
-//		System.out.printf("Key = %s, Index = %d\n\n", key, index);
+		// System.out.printf("Key = %s, Index = %d\n\n", key, index);
 
 		// check if bucket is empty, null or initialized
 		if (buckets[index] == null) {
@@ -152,6 +153,7 @@ public class StudentRecord {
 			this(null, null);
 		}
 
+		@Override
 		public String toString() {
 			return data.toString();
 		}

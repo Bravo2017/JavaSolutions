@@ -1,6 +1,7 @@
 package hackerrank;
-import java.io.*;
+
 import java.util.*;
+
 //WORKING SOLUTION - ACCEPTED BY HACKER_RANK
 public class BigFileSystemSearchSolution {
 
@@ -9,7 +10,8 @@ public class BigFileSystemSearchSolution {
 
 	public static void main(String[] args) {
 		BigFileSystemSearchSolution testSystem1 = new BigFileSystemSearchSolution();
-		// 1. Read all N inputs and Q queries and save in respective data structures
+		// 1. Read all N inputs and Q queries and save in respective data
+		// structures
 		testSystem1.readInput();
 
 		// 2. Process Queries based on type
@@ -63,17 +65,17 @@ public class BigFileSystemSearchSolution {
 	}
 
 	// process Queries
-	public void processQuery() {		
-		//process all queries
-		final int numberOfQueries = allQueries.length;		
+	public void processQuery() {
+		// process all queries
+		final int numberOfQueries = allQueries.length;
 		int[] result = new int[numberOfQueries];
-		
+
 		QueryFile oneQuery = null;
-		for(int i = 0 ; i < numberOfQueries; ++i){
+		for (int i = 0; i < numberOfQueries; ++i) {
 			oneQuery = allQueries[i];
 			int type = oneQuery.type;
-			
-			switch(type){
+
+			switch (type) {
 			case 1:
 				result[i] = queryAll(oneQuery.mapQueryNumber);
 				break;
@@ -83,14 +85,14 @@ public class BigFileSystemSearchSolution {
 			case 3:
 				result[i] = querySome(oneQuery.mapQueryNumber);
 			}
-		}		
-		for(int i : result)
+		}
+		for (int i : result)
 			System.out.println(i);
 	}
 
 	private int queryAll(HashMap<Integer, Integer> queryMap) {
-		//ArrayList<Integer> resultQueryAll = new ArrayList<Integer>();
-        int resultQueryAll = 0;
+		// ArrayList<Integer> resultQueryAll = new ArrayList<Integer>();
+		int resultQueryAll = 0;
 		Set<Integer> queryKeySet = queryMap.keySet();
 		HashMap<Integer, Integer> ithFileMap = null;
 		// compare two HashMaps
@@ -101,22 +103,22 @@ public class BigFileSystemSearchSolution {
 				if (ithFileMap.containsKey(queryNum)
 						&& queryMap.get(queryNum) <= ithFileMap.get(queryNum)) {
 					query_all_flag = true;
-				} else{
+				} else {
 					query_all_flag = false;
 					break;
 				}
 			}
 			if (query_all_flag)
-				//resultQueryAll.add(fileIndex);
-                resultQueryAll++;
+				// resultQueryAll.add(fileIndex);
+				resultQueryAll++;
 		}
-		//return resultQueryAll.size();
-        return resultQueryAll;
+		// return resultQueryAll.size();
+		return resultQueryAll;
 	}
 
 	private int queryAny(HashMap<Integer, Integer> queryMap) {
-		//ArrayList<Integer> resultQueryAny = new ArrayList<Integer>();
-        int resultQueryAny = 0;
+		// ArrayList<Integer> resultQueryAny = new ArrayList<Integer>();
+		int resultQueryAny = 0;
 		Set<Integer> queryKeySet = queryMap.keySet();
 		HashMap<Integer, Integer> ithFileMap = null;
 		// compare two HashMaps
@@ -125,26 +127,25 @@ public class BigFileSystemSearchSolution {
 			ithFileMap = inputFiles[fileIndex].mapFileNumber;
 
 			for (Integer queryNum : queryKeySet) {
-				if ( !(ithFileMap.containsKey(queryNum))){
+				if (!(ithFileMap.containsKey(queryNum))) {
 					query_one_flag = false;
-				}
-				else{
+				} else {
 					query_one_flag = true;
 					break;
 				}
 			}
 			if (query_one_flag)
-                resultQueryAny++;
-				//resultQueryAny.add(fileIndex);
-            
+				resultQueryAny++;
+			// resultQueryAny.add(fileIndex);
+
 		}
-		//return resultQueryAny.size();
-        return resultQueryAny;
+		// return resultQueryAny.size();
+		return resultQueryAny;
 	}
 
 	private int querySome(HashMap<Integer, Integer> queryMap) {
-		//ArrayList<Integer> resultQuerySome = new ArrayList<Integer>();
-        int resultQuerySome =0;
+		// ArrayList<Integer> resultQuerySome = new ArrayList<Integer>();
+		int resultQuerySome = 0;
 		Set<Integer> queryKeySet = queryMap.keySet();
 		HashMap<Integer, Integer> ithFileMap = null;
 		// compare two HashMaps
@@ -152,25 +153,26 @@ public class BigFileSystemSearchSolution {
 			boolean query_some_flag = false;
 			boolean query_all_flag = true;
 			ithFileMap = inputFiles[fileIndex].mapFileNumber;
-									
+
 			for (Integer queryNum : queryKeySet) {
 
-				if ( !ithFileMap.containsKey(queryNum)) {
+				if (!ithFileMap.containsKey(queryNum)) {
 					query_all_flag = false;
-				}else{
-					if(queryMap.get(queryNum) <= ithFileMap.get(queryNum) && query_all_flag){
+				} else {
+					if (queryMap.get(queryNum) <= ithFileMap.get(queryNum)
+							&& query_all_flag) {
 						query_all_flag = true;
 					}
 					query_some_flag = true;
 				}
 			}
-			
+
 			if (!query_all_flag && query_some_flag)
-                resultQuerySome++;
-				//resultQuerySome.add(fileIndex);
+				resultQuerySome++;
+			// resultQuerySome.add(fileIndex);
 		}
-		//return resultQuerySome.size();
-        return resultQuerySome;
+		// return resultQuerySome.size();
+		return resultQuerySome;
 	}
 
 	// public void showInput(){
@@ -207,8 +209,7 @@ class QueryFile {
 		for (int i = 0; i < this.length; ++i) {
 			tempKey = Integer.parseInt(stringToken[i + 2]);
 			if (mapQueryNumber.containsKey(tempKey))
-				mapQueryNumber
-						.put(tempKey, mapQueryNumber.get(tempKey) + 1);
+				mapQueryNumber.put(tempKey, mapQueryNumber.get(tempKey) + 1);
 			else
 				mapQueryNumber.put(tempKey, 1);
 		}

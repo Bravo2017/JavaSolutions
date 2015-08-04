@@ -1,10 +1,10 @@
 package trees;
 
 public class TestBinarySearchTree {
-	public static void main(String[] args){
-		
+	public static void main(String[] args) {
+
 		BinarySearchTree<String> bst1 = new BinarySearchTree<String>();
-		
+
 		bst1.insert("F");
 		bst1.insert("B");
 		bst1.insert("G");
@@ -16,9 +16,8 @@ public class TestBinarySearchTree {
 		bst1.insert("H");
 		bst1.insert("F");
 		bst1.insert("F");
-		
-		
+
 		bst1.printTreeInOrder();
-		
+
 	}
 }
