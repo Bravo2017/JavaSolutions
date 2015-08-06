@@ -175,13 +175,17 @@ public class LinkedList<E extends Comparable<E>> {
 	//check - selectiveReverse()
 	private Node<E> recursiveReverse2(Node<E> x){
 		//for null head
-		if(x == null) 	return x;
+		if(x == null) 	return x; //return null;
 		
 		// actual base case- for non-null linked list
-		if(x.getNext() == null)	return x;
+		if(x.getNext() == null)	return x; //this will become head
 		else{			
+			// reverse all nodes starting from x.next.
 			Node<E> temp = recursiveReverse2(x.getNext());
+			// since x.next still points to the next node,
+			// make x.next.next point to x.
 			x.getNext().setNext(x);
+			//remove the link to next
 			x.setNext(null);
 			return temp;
 		}
